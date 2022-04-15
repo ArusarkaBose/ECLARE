@@ -115,7 +115,8 @@ class GraphCombine(nn.Module):
             self.register_parameter('bias', None)
             self.register_parameter('weight', None)
         self.pre_build = [None, None]
-        self.attention = tl.spectral_attention(self.input_size, self.degree)
+        # self.attention = tl.spectral_attention(self.input_size, self.degree)
+        self.attention = tl.AttnDecoderRNN(self.input_size, self.input_size * self.degree)
         self.print = False
         self.reset_parameters()
 
